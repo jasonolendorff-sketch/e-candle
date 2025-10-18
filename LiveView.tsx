@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { LIVE_VIEW_URL, LIVE_VIEW_TITLE, SCROLL_ON_OPEN } from '../lib/config';
 
-type Props = { onClose: () => void; };
-
-export default function LiveView({ onClose }: Props) {
+export default function LiveView({ onClose }: { onClose: () => void }) {
   useEffect(() => {
     const prev = document.body.style.overflow;
-    if (!SCROLL_ON_OPEN) document.body.style.overflow = 'hidden'; // lock background
+    if (!SCROLL_ON_OPEN) document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = prev; };
   }, []);
 
@@ -17,7 +15,6 @@ export default function LiveView({ onClose }: Props) {
           <strong>{LIVE_VIEW_TITLE}</strong>
           <button className="close" onClick={onClose} aria-label="Close live view">Close</button>
         </div>
-        {/* Use iframe so the page behind doesn't reflow/scale */}
         <iframe className="live-frame" src={LIVE_VIEW_URL} title={LIVE_VIEW_TITLE} allow="autoplay; fullscreen" />
       </div>
     </div>
