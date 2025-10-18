@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prebuild": "npm i -D typescript @types/react @types/node"
   },
   "dependencies": {
     "next": "14.2.5",
