@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E‑Candle (Static)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner container">
+      <span class="brand">✨ E‑Candle</span>
+      <span class="badge">Static</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="card" class="card">
+      <h1 style="margin-top:0">Support the Lights</h1>
+      <p>Make an offering to open the live view overlay. Background won’t scale; scrolling is locked.</p>
+      <div style="display:grid;gap:12px;margin-top:16px">
+        <label>Name<br><input id="name" type="text" placeholder="Your name" class="input"></label>
+        <label>Intention (optional)<br><input id="intent" type="text" placeholder="Prayer / intention" class="input"></label>
+        <button id="go" class="btn primary">Continue to Live View</button>
+        <p style="opacity:.7;font-size:12px">
+          Set your camera URL in <code>config.js</code> → <code>LIVE_VIEW_URL</code>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="overlay-content">
+      <div class="overlay-header">
+        <strong id="live-title">Live E‑Candle</strong>
+        <button class="close" id="close-btn" aria-label="Close live view">Close</button>
+      </div>
+      <iframe id="live-frame" class="live-frame" title="Live E‑Candle" allow="autoplay; fullscreen"></iframe>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
