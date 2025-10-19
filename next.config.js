@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: { unoptimized: true } // avoids remote loader setup for quick testing
+  images: {
+    remotePatterns: [{ protocol: 'http', hostname: '**' }, { protocol: 'https', hostname: '**' }]
+  }
 };
 module.exports = nextConfig;

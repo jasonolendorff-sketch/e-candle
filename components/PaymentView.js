@@ -1,25 +1,18 @@
-export default function PaymentView({ onGoLive }){
+import { FADE_MS } from '@/constants';
+
+export default function PaymentView({ fadingOut, onContinue }) {
   return (
-    <div className="container">
-      <div className="card">
-        <h1 style={{marginTop:0}}>Support & Light a Candle</h1>
-        <p>When you complete a test "donation", we’ll fade into the live wall of lights without moving or zooming the background.</p>
-        <div className="grid" style={{marginTop:16}}>
-          <div className="card">
-            <h3 style={{marginTop:0}}>Test Payment</h3>
-            <p>This button simulates your payment callback.</p>
-            <button className="button" onClick={onGoLive}>Simulate Payment → Go Live</button>
-          </div>
-          <div className="card">
-            <h3 style={{marginTop:0}}>Notes</h3>
-            <ul>
-              <li>Header is sticky and height‑aware.</li>
-              <li>Live view fades in centered (no auto scroll).</li>
-              <li>Background never scales during crossfade.</li>
-            </ul>
-          </div>
-        </div>
+    <div className="card" style={{ transition:`opacity ${FADE_MS}ms ease`, opacity: fadingOut?0:1 }}>
+      <h1 style={{ marginTop: 0 }}>Support the Lights</h1>
+      <p>Make an offering to open the live view overlay. Background won’t scale; scrolling is locked.</p>
+      <div style={{ display:'grid', gap:12, marginTop:16 }}>
+        <label>Name<br/><input type="text" placeholder="Your name" className="input"/></label>
+        <label>Intention (optional)<br/><input type="text" placeholder="Prayer / intention" className="input"/></label>
+        <button className="btn primary" onClick={onContinue}>Continue to Live View</button>
+        <p style={{ opacity:.7, fontSize:12 }}>
+          Configure <code>NEXT_PUBLIC_LIVE_VIEW_URL</code> in your environment.
+        </p>
       </div>
     </div>
-  )
+  );
 }
